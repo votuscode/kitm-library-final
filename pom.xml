@@ -119,4 +119,9 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+
+    <build>
+        <plugins>
+        </plugins>
+    </build>
 </project>

@@ -1,0 +1,62 @@
+<!-- Author form -->
+<div th:fragment="form(form, dto)">
+  <!--/*@thymesVar id="form" type="com.kitm.library.backend.admin.common.models.Form"*/-->
+  <!--/*@thymesVar id="action" type="com.kitm.library.backend.admin.common.models.Form.Action"*/-->
+  <!--/*@thymesVar id="dto" type="com.kitm.library.backend.admin.user.dto.SubmitUserFormDto"*/-->
+  <!--/*@thymesVar id="roles" type="com.kitm.library.backend.admin.common.models.SelectOptions"*/-->
+  <!--/*@thymesVar id="option" type="com.kitm.library.backend.admin.common.models.SelectOptions.Option"*/-->
+  <form th:action="${form.url}" th:method="${form.method}" class="form-horizontal">
+    <fieldset style="height: calc(100vh - 12rem); overflow: auto; padding: 1rem; background: var(--bs-gray-100)">
+      <div class="form-group mb-3">
+        <label class="col-lg-3 control-label">Username</label>
+        <div class="col-lg-9">
+          <input th:field="*{dto.username}" type="text" class="form-control" name="username" required/>
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label class="col-lg-3 control-label">Name</label>
+        <div class="col-lg-9">
+          <input th:field="*{dto.name}" type="text" class="form-control" name="name" required/>
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label class="col-lg-3 control-label">E-mail</label>
+        <div class="col-lg-9">
+          <input th:field="*{dto.email}" type="email" class="form-control" name="email" required/>
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <div th:each="option: ${roles.options}" class="form-check form-switch">
+          <input th:field="*{dto.roles}" class="form-check-input" type="checkbox" role="switch" th:id="${option.label}"
+                 th:value="${option.label}">
+          <label class="form-check-label" th:for="${option.label}" th:text="${option.label}"></label>
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label class="col-lg-3 control-label">Password</label>
+        <div class="col-lg-9">
+          <input th:field="*{dto.passwordOriginal}" type="password" class="form-control" name="passwordOriginal" required/>
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label class="col-lg-3 control-label">Confirm password</label>
+        <div class="col-lg-9">
+          <input th:field="*{dto.passwordConfirmation}" type="password" class="form-control" name="passwordConfirmation" required/>
+        </div>
+      </div>
+
+      <div class="form-group mb-3">
+        <div class="col-lg-12 col-lg-offset-3">
+          <!-- Form actions -->
+          <button th:each="action: ${form.actions}"
+                  th:text="${action.label}"
+                  th:value="${action.name}"
+                  th:classappend="${action.type}"
+                  name="action" type="submit" class="btn m-1">Label
+          </button>
+        </div>
+      </div>
+      <input type="hidden" name="id" th:value="${dto.id}"/>
+    </fieldset>
+  </form>
+</div>

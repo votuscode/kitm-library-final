@@ -1,0 +1,34 @@
+<!-- Author form -->
+<div th:fragment="form(form, dto)">
+  <!--/*@thymesVar id="form" type="com.kitm.library.backend.admin.common.models.Form"*/-->
+  <!--/*@thymesVar id="action" type="com.kitm.library.backend.admin.common.models.Form.Action"*/-->
+  <!--/*@thymesVar id="dto" type="com.kitm.library.backend.admin.author.dto.SubmitAuthorFormDto"*/-->
+  <form th:action="${form.url}" th:method="${form.method}" class="form-horizontal">
+    <fieldset style="height: calc(100vh - 12rem); overflow: auto; padding: 1rem; background: var(--bs-gray-100)">
+      <div class="form-group mb-3">
+        <label class="col-lg-3 control-label">Name</label>
+        <div class="col-lg-9">
+          <input type="text" class="form-control" name="name" required th:value="${dto.name}"/>
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <label class="col-lg-3 control-label">Description</label>
+        <div class="col-lg-9">
+          <textarea class="form-control" name="description" rows="5" required th:field="${dto.description}"></textarea>
+        </div>
+      </div>
+      <div class="form-group mb-3">
+        <div class="col-lg-12 col-lg-offset-3">
+          <!-- Form actions -->
+          <button th:each="action: ${form.actions}"
+                  th:text="${action.label}"
+                  th:value="${action.name}"
+                  th:classappend="${action.type}"
+                  name="action" type="submit" class="btn m-1">Label
+          </button>
+        </div>
+      </div>
+      <input type="hidden" name="id" th:value="${dto.id}"/>
+    </fieldset>
+  </form>
+</div>

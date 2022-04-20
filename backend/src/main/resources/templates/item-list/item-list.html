@@ -1,0 +1,47 @@
+<!--Item list-->
+<div th:fragment="item-list(itemList)" class="row mb-3">
+  <!--/*@thymesVar id="itemList" type="com.kitm.library.backend.admin.common.models.ItemList"*/-->
+  <!--/*@thymesVar id="item" type="com.kitm.library.backend.admin.common.models.ItemList.Item"*/-->
+  <div class="col">
+    <div class="row">
+      <div class="col">
+        <h2 th:text="${itemList.header}">Header</h2>
+        <p th:text="${itemList.description}">Description</p>
+        <div th:if="${itemList.items.size() == 0}" class="alert alert-secondary" role="alert">
+          No data
+        </div>
+      </div>
+      <div class="col-auto">
+        <a role="button" class="btn btn-primary" th:text="${itemList.action.label}" th:href="${itemList.action.href}">
+          Action
+        </a>
+      </div>
+    </div>
+
+    <ul class="list-group card" style="height: calc(100vh - 12rem); overflow: auto; padding: 1rem; background: var(--bs-gray-100)">
+      <a th:href="${item.href}"
+         class="list-group-item list-group-item-action flex-column align-items-start"
+         th:each="item: ${itemList.items}"
+      >
+        <div class="row">
+          <!-- Image -->
+          <div class="col-2" th:unless="${#strings.isEmpty(item.image)}">
+            <img th:src="${item.image}" alt="Image" style="width: 100%"/>
+          </div>
+          <!-- Content -->
+          <div th:class="${#strings.isEmpty(item.image)} ? 'col' : 'col-10'">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1" th:text="${item.name}">Name</h5>
+              <small th:if="${item.badge}" th:text="${item.badge}">Badge</small>
+            </div>
+            <p class="mb-1" th:text="${item.description}">Description</p>
+            <small th:text="${item.info}">Info</small>
+          </div>
+        </div>
+      </a>
+    </ul>
+
+    <app-item-list-navigation></app-item-list-navigation>
+  </div>
+</div>
+<!--Item list END-->

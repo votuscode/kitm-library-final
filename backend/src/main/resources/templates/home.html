@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="layout/layout.html::layout-head"></head>
+<body>
+
+<!-- Header navigation -->
+<nav th:insert="layout/layout.html::layout-nav(layout = ${layout})"></nav>
+
+<!-- Main container -->
+<div th:fragment="layout-container" class="container-fluid" style="height: calc(100vh - 6rem); overflow: hidden">
+  <div class="row">
+    <!-- Left menu -->
+    <div th:replace="layout/left-menu.html::left-menu(layout = ${layout})"></div>
+    <!-- Content -->
+    <div class="col-9">
+      <div class="tab-content" id="v-pills-tabContent">
+        <div class="tab-pane fade show active" role="tabpanel" aria-labelledby="v-pills-home-tab">
+          <main th:fragment="layout-content" class="container">
+            <!--Home-->
+            <p>Home</p>
+          </main>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

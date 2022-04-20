@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:insert="layout/layout.html::layout-head"></head>
+<style>
+    .login-form {
+        width: 22rem;
+        margin: 1rem auto 0;
+    }
+
+    @media (max-width: 500px) {
+        .login-form {
+            min-width: calc(100vw - 1rem);
+        }
+    }
+</style>
+<body>
+<div class="container">
+  <div class="card login-form">
+    <img src="/assets/kitm-logo.png" class="card-img-top" alt="KITM">
+    <div class="card-body">
+      <h5 class="card-title">KITM Library</h5>
+      <p class="card-text">Please use this form to login.</p>
+      <div class="alert alert-danger" role="alert" th:if="${param.error}">
+        Could not login, please check your credentials and try again.
+      </div>
+      <div class="alert alert-success" role="alert" th:if="${param.logout}">
+        Successfully logged out.
+      </div>
+      <form method="post" th:action="@{/login}">
+        <div class="form-group mb-3">
+          <label for="username">Username</label>
+          <input th:value="${param.username}" name="username" type="text" class="form-control" id="username" placeholder="Username" required>
+        </div>
+        <div class="form-group mb-3">
+          <label for="password">Password</label>
+          <input name="password" type="password" class="form-control" id="password" placeholder="Password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <a type="button" class="btn btn-success" th:href="@{/register}">Register</a>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>

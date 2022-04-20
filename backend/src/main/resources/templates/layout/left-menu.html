@@ -1,0 +1,20 @@
+<!--Left menu-->
+<div th:fragment="left-menu(layout)" class="col-3 d-none d-lg-block">
+  <!--/*@thymesVar id="layout" type="com.kitm.library.backend.admin.common.models.Layout"*/-->
+  <!--/*@thymesVar id="item" type="com.kitm.library.backend.admin.common.models.Layout.Item"*/-->
+  <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    <a th:each="item: ${layout.items}"
+       th:href="${item.href}"
+       th:text="${item.label}"
+       th:classappend="${item.active ? 'active' : ''}"
+       class="nav-link"
+       data-toggle="pill"
+       href="#v-pills-home"
+       role="tab"
+       aria-controls="v-pills-home"
+       aria-selected="true"
+    >
+      Label
+    </a>
+  </div>
+</div>

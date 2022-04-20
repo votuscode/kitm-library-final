@@ -1,0 +1,22 @@
+.card-actions {
+  max-width: 300px;
+  margin-bottom: 1rem;
+
+  [slot="header"] {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  sl-icon-button {
+    font-size: var(--sl-font-size-medium);
+  }
+
+  sl-button:not(:last-child) {
+    margin-right: 0.25rem;
+  }
+}

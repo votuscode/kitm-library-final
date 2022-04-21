@@ -214,10 +214,6 @@
           <mainClass>com.kitm.library.backend.LibraryBackend</mainClass>
           <excludes>
             <exclude>
-              <groupId>com.kitm.library.ui</groupId>
-              <artifactId>kitm-library-ui</artifactId>
-            </exclude>
-            <exclude>
               <groupId>org.projectlombok</groupId>
               <artifactId>lombok</artifactId>
             </exclude>

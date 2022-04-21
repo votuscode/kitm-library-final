@@ -10,3 +10,5 @@
 /**/target
 
 /backend/src/main/resources/config/application-secrets.properties
+/backend/src/main/resources/database/database.sql
+/.env
